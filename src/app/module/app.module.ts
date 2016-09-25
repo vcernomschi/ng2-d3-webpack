@@ -2,7 +2,7 @@ import {NgModule, CUSTOM_ELEMENTS_SCHEMA, ApplicationRef} from '@angular/core';
 import {BrowserModule}  from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-// import { D3Service } from 'd3-ng2-service'; // <-- import statement
+import { D3Service } from 'd3-ng2-service'; // <-- import statement
 import { LoadersCssModule } from 'angular2-loaders-css';
 
 import {
@@ -11,7 +11,7 @@ import {
     D3AvailabilityChartComponent,
     D3ActiveUsersComponent,
     D3ActiveUsersChartComponent,
-    // BrushZoom2Component
+    BrushZoom2Component
 } from '../components/index';
 
 @NgModule({
@@ -22,7 +22,7 @@ import {
         D3AvailabilityChartComponent,
         D3ActiveUsersComponent,
         D3ActiveUsersChartComponent,
-        // BrushZoom2Component
+        BrushZoom2Component
     ],
     imports: [
         BrowserModule,
@@ -31,7 +31,7 @@ import {
         LoadersCssModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    // providers: [D3Service], // <-- provider registration
+    providers: [D3Service], // <-- provider registration
     entryComponents: [AppComponent],
     bootstrap: [AppComponent]
 })
