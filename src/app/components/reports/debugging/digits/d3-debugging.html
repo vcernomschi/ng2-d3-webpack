@@ -1,0 +1,32 @@
+<div class="dm-report-container" id="debugging">
+    <div class="number-box-container">
+        <span class="dm-block dm-report-name">Debugging</span>
+        <div class="medium-number-box-200 red" id="errors-number-box">
+            <span class="number-display">
+                <p class="dm-main-chart-info-header">ERRORS</p>
+                <p class="bg-line-height">{{errorsNumber}}</p>
+            </span>
+        </div>
+        <div class="medium-number-box-200 orange" id="warnings-number-box">
+            <span class="number-display">
+                <p class="dm-main-chart-info-header">WARNINGS</p>
+                <p class="bg-line-height">{{warningsNumber}}</p>
+            </span>
+        </div>
+    </div>
+    <div class="chart-container">
+        <div class="dm-btn-container">
+            <a href="#" class="dm-button dm-button-small dm-button-flr" id="debugging-5min-btn">1 min</a>
+            <a href="#" class="dm-button dm-button-small dm-button-flr" id="debugging-30min-btn">1 h</a>
+            <a href="#" class="dm-button dm-button-small dm-button-flr" id="debugging-custom-btn">custom</a>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="dm-chart" id="debugging-chart">
+            <d3-debugging-chart></d3-debugging-chart>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>

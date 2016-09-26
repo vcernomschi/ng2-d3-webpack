@@ -11,6 +11,12 @@ import {
     D3AvailabilityChartComponent,
     D3ActiveUsersComponent,
     D3ActiveUsersChartComponent,
+    D3DebuggingComponent,
+    D3DebuggingChartComponent,
+    D3ServicesComponent,
+    D3ServicesChartComponent,
+    D3CloudTrailComponent,
+    D3CloudTrailChartComponent,
     BrushZoom2Component
 } from '../components/index';
 
@@ -22,13 +28,19 @@ import {
         D3AvailabilityChartComponent,
         D3ActiveUsersComponent,
         D3ActiveUsersChartComponent,
-        BrushZoom2Component
+        D3DebuggingComponent,
+        D3DebuggingChartComponent,
+        D3ServicesComponent,
+        D3ServicesChartComponent,
+        D3CloudTrailComponent,
+        D3CloudTrailChartComponent,
+        BrushZoom2Component,
     ],
     imports: [
         BrowserModule,
         CommonModule,
         FormsModule,
-        LoadersCssModule
+        LoadersCssModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [D3Service], // <-- provider registration

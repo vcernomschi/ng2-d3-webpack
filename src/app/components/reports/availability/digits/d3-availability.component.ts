@@ -10,6 +10,7 @@ import {Component} from '@angular/core';
     styleUrls: ['./d3-availability.css']
 })
 export class D3AvailabilityComponent {
-    public lastDowntimeString: string = 'd3-availability';
+    public lastDowntimeString: string = '1 mo 2 days';
     public outagesNumber: number = 10;
+    public uptimePercentage: number = 70;
 }

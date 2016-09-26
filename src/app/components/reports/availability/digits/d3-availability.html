@@ -1,9 +1,20 @@
 <div class="dm-report-container" id="last-downtime">
-
     <div class="number-box-container">
         <span class="dm-block dm-report-name">Last Downtime</span>
-        <div class="medium-number-box-200" id="last-downtime-number-box">{{lastDowntimeString}}</div>
-        <div class="medium-number-box-200" id="uptime-percentage-number-box">{{outagesNumber}}</div>
+        <div class="medium-number-box-200" id="last-downtime-number-box">
+            <span class="number-display">
+                <p class="dm-main-chart-info-header">DOWNTIME</p>
+                <p class="bg-line-height">{{lastDowntimeString}}</p>
+                <p class="dm-main-chart-outages">( {{outagesNumber}} outages )</p>
+            </span>
+
+        </div>
+        <div class="medium-number-box-200" id="uptime-percentage-number-box">
+            <span class="number-display">
+                <p class="dm-main-chart-info-header">UPTIME</p>
+                <p class="bg-line-height">{{uptimePercentage}}%</p>
+            </span>
+        </div>
     </div>
 
     <div class="chart-container">
@@ -13,8 +24,6 @@
             <a href="#" class="dm-button dm-button-small dm-button-flr" id="downtime-custom-btn">custom</a>
             <div class="clear"></div>
         </div>
-
-
         <div class="dm-chart" id="last-downtime-chart">
             <d3-availability-chart></d3-availability-chart>
         </div>

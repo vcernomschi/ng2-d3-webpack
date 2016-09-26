@@ -2,10 +2,6 @@
  * Created by vcernomschi on 9/23/16.
  */
 
-/**
- * Created by vcernomschi on 9/23/16.
- */
-
 import { Component, OnInit, ElementRef } from '@angular/core';
 // import { D3Service, D3, Selection } from 'd3-ng2-service'; // <-- import the D3 Service, the type alias for the d3 variable and the Selection interface
 

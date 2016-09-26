@@ -51,7 +51,7 @@ text {
 
 .chart-container {
     float: right;
-    width: calc(100% - 220px);
+    width: calc(100% - 230px);
 
 }
 
@@ -221,6 +221,10 @@ text {
     height: 185px;
     line-height: normal;
     margin-bottom: 8px;
+}
+
+.bg-line-height {
+    line-height: 100%;
 }
 
 

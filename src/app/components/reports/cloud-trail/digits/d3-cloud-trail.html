@@ -1,0 +1,28 @@
+<div class="dm-report-container" id="cloud-trail-now">
+    <div class="number-box-container">
+        <span class="dm-block dm-report-name">Cloud Trail</span>
+
+        <div class="large-number-box-200" id="cloud-trail-number-box">
+
+            <span class="number-display">
+                <p class="dm-main-chart-info-header">NUMBER OF RECORDS</p>
+                <p class="bg-line-height">{{recordsNumber}}</p>
+            </span>
+        </div>
+    </div>
+    <div class="chart-container">
+        <div class="dm-btn-container">
+            <a href="#" class="dm-button dm-button-small dm-button-flr" id="cloud-trail-5min-btn">1 h</a>
+            <a href="#" class="dm-button dm-button-small dm-button-flr" id="cloud-trail-30min-btn">1 d</a>
+            <a href="#" class="dm-button dm-button-small dm-button-flr" id="cloud-trail-custom-btn">custom</a>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="dm-chart" id="cloud-trail-chart">
+            <d3-cloud-trail-chart></d3-cloud-trail-chart>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
