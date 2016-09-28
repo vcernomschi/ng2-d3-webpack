@@ -1,2 +1,17 @@
-<h3>{{testTitle}}</h3>
-<!--<loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'"></loaders-css>-->
+
+<div class="chart-container">
+    <div class="dm-btn-container" (click)="clicked($event)">
+        <a href="#" class="dm-button dm-button-small dm-button-flr" id="rigth-now-1min-btn">1 min</a>
+        <a href="#" class="dm-button dm-button-small dm-button-flr" id="rigth-now-1sec-btn">1 sec</a>
+        <a href="#" class="dm-button dm-button-small dm-button-flr" id="rigth-now-custom-btn">custom</a>
+        <a href="" class="dm-button dm-button-small dm-button-flr" dropdown></a>
+        <dm-dropdown-demo></dm-dropdown-demo>
+        <div class="clear"></div>
+    </div>
+
+    <div class="dm-chart" id="right-now-chart">
+        <div class="dm-chart-name">{{chartTitle}}</div>
+        <svg></svg>
+    </div>
+    <div class="clear"></div>
+</div>

@@ -1,9 +1,10 @@
-import {NgModule, CUSTOM_ELEMENTS_SCHEMA, ApplicationRef} from '@angular/core';
-import {BrowserModule}  from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ApplicationRef } from '@angular/core';
+import { BrowserModule }  from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { D3Service } from 'd3-ng2-service'; // <-- import statement
 import { LoadersCssModule } from 'angular2-loaders-css';
+import { AlertModule, DatepickerModule, DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 import {
     AppComponent,
@@ -17,7 +18,7 @@ import {
     D3ServicesChartComponent,
     D3CloudTrailComponent,
     D3CloudTrailChartComponent,
-    BrushZoom2Component
+    DropdownDemoComponent,
 } from '../components/index';
 
 @NgModule({
@@ -34,18 +35,21 @@ import {
         D3ServicesChartComponent,
         D3CloudTrailComponent,
         D3CloudTrailChartComponent,
-        BrushZoom2Component,
+        DropdownDemoComponent,
     ],
     imports: [
         BrowserModule,
         CommonModule,
         FormsModule,
         LoadersCssModule,
+        AlertModule,
+        DatepickerModule,
+        DropdownModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [D3Service], // <-- provider registration
     entryComponents: [AppComponent],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 
 export class AppModule {

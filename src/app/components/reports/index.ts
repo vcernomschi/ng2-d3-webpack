@@ -12,4 +12,4 @@ export * from './services/digits/d3-services.component';
 export * from './services/chart/d3-services-chart.component';
 export * from './cloud-trail/digits/d3-cloud-trail.component';
 export * from './cloud-trail/chart/d3-cloud-trail-chart.component';
-export { BrushZoom2Component } from './d3-example/brush-zoom-2/brush-zoom-2.component';
+export * from './drop-down/drop-down.component';
