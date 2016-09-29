@@ -180,7 +180,7 @@ export class D3ActiveUsersChartComponent implements OnInit, OnDestroy {
     }
 
     public clicked(event: Event) {
-        console.log('clicked event: ', event)
+        console.log('clicked event: ', event);
         event.preventDefault();
     }
 

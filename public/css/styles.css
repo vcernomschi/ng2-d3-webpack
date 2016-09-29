@@ -28,6 +28,11 @@ text {
     width: 940px;
 }
 
+.dm-container * {
+    box-sizing: initial;
+    -webkit-box-sizing: initial;
+}
+
 .dm-container:before, .dm-container:after {
     display: table;
     line-height: 0;
@@ -263,7 +268,8 @@ text {
     list-style-type: none;
     font-weight : 400;
     font-style: normal;
-    padding-top: 12px;
+    padding-top: 0px;
+    margin-top: -6px;
 }
 
 .red {
@@ -360,6 +366,44 @@ text {
     display: block;
 }
 
+.dm-container .border-box * {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.dm-grey {
+    background-color: #999;
+    color: white;
+}
+
+.dm-grey:hover, .dm-grey:active, .dm-grey:focus {
+    background-color: #666;
+    color: white;
+}
+
+.margin-left-10 {
+    margin-left: 10px;
+}
+
+.dm-red-in-black {
+    background: black;
+    color: red;
+}
+
+div.well {
+    background-color: transparent;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    float: left;
+}
+
+div.well:before, div.well:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 @media only screen and (max-width: 749px){
     /* For mobile phones: */
     .chart-container {
@@ -377,7 +421,7 @@ text {
 
 }
 
-@media only screen and (min-width: 750px ) and (max-width: 950px){
+@media (min-width: 750px ) and (max-width: 950px){
 
     .dm-container {
         width: 100%;

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { D3Service } from 'd3-ng2-service'; // <-- import statement
 import { LoadersCssModule } from 'angular2-loaders-css';
-import { AlertModule, DatepickerModule, DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { AlertModule, DatepickerModule, DropdownModule, CollapseModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 import {
     AppComponent,
@@ -18,7 +18,7 @@ import {
     D3ServicesChartComponent,
     D3CloudTrailComponent,
     D3CloudTrailChartComponent,
-    DropdownDemoComponent,
+    CustomTimeIntervalComponent,
 } from '../components/index';
 
 @NgModule({
@@ -35,7 +35,7 @@ import {
         D3ServicesChartComponent,
         D3CloudTrailComponent,
         D3CloudTrailChartComponent,
-        DropdownDemoComponent,
+        CustomTimeIntervalComponent,
     ],
     imports: [
         BrowserModule,
@@ -45,6 +45,7 @@ import {
         AlertModule,
         DatepickerModule,
         DropdownModule,
+        CollapseModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [D3Service], // <-- provider registration

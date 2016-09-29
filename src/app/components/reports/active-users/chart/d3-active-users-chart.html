@@ -1,11 +1,18 @@
 
 <div class="chart-container">
     <div class="dm-btn-container" (click)="clicked($event)">
-        <a href="#" class="dm-button dm-button-small dm-button-flr" id="rigth-now-1min-btn">1 min</a>
-        <a href="#" class="dm-button dm-button-small dm-button-flr" id="rigth-now-1sec-btn">1 sec</a>
-        <a href="#" class="dm-button dm-button-small dm-button-flr" id="rigth-now-custom-btn">custom</a>
-        <a href="" class="dm-button dm-button-small dm-button-flr" dropdown></a>
-        <dm-dropdown-demo></dm-dropdown-demo>
+        <div class="btn-group dm-button-flr margin-left-10" dropdown keyboardNav="true">
+            <button id="simple-btn-keyboard-nav" type="button" class="btn btn-default dm-grey dm-button-flr" dropdownToggle>
+                Select <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+                <li role="menuitem"><a class="dropdown-item" href="#">Last 24 hours</a></li>
+                <li role="menuitem"><a class="dropdown-item" href="#">Last 1 hour</a></li>
+                <li role="menuitem"><a class="dropdown-item" href="#">Last 1 min</a></li>
+                <li role="menuitem"><a class="dropdown-item" href="#">Last 1 sec</a></li>
+            </ul>
+        </div>
+        <dm-custom-time-interval></dm-custom-time-interval>
         <div class="clear"></div>
     </div>
 

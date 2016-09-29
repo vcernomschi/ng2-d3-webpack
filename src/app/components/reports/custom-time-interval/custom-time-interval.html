@@ -1,0 +1,15 @@
+<button type="button" class="btn btn-default dm-grey dm-button-flr margin-left-10"
+        (click)="isCollapsed = !isCollapsed"><i class="glyphicon glyphicon-calendar"></i> Custom
+</button>
+<pre class="card card-block card-header">
+    Start date: <em *ngIf="startedDate">{{ getStartedDate() | date:'fullDate'}}</em>
+    End date: <em *ngIf="endDate">{{ getEndDate() | date:'fullDate'}}</em>
+</pre>
+<div (collapsed)="collapsed($event)"
+     (expanded)="expanded($event)"
+     [collapse]="isCollapsed"
+     class="card card-block card-header border-box">
+
+        <datepicker [(ngModel)]="startedDate" [minDate]="minDate"></datepicker>
+        <datepicker [(ngModel)]="endDate" [minDate]="startedDate"></datepicker>
+</div>
