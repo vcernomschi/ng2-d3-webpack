@@ -60,7 +60,7 @@ export class D3AvailabilityChartComponent implements OnInit, OnDestroy {
             d3Svg = this.d3Svg = d3ParentElement.select<SVGSVGElement>('svg');
 
             containerWidth = +d3Svg.node().getBoundingClientRect().width;
-            containerHeight = +d3Svg.node().getBoundingClientRect().height + 30;
+            containerHeight = +d3Svg.node().getBoundingClientRect().height - 22;
 
             width = containerWidth - margin.left - margin.right;
             height = containerHeight - margin.top - margin.bottom;

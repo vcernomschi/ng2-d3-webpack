@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { D3Service } from 'd3-ng2-service'; // <-- import statement
 import { LoadersCssModule } from 'angular2-loaders-css';
 import { AlertModule, DatepickerModule, DropdownModule, CollapseModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import {
     AppComponent,
@@ -46,6 +47,7 @@ import {
         DatepickerModule,
         DropdownModule,
         CollapseModule,
+        ChartsModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [D3Service], // <-- provider registration

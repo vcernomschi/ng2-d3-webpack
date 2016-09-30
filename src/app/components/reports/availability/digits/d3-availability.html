@@ -1,6 +1,7 @@
 <div class="dm-report-container" id="last-downtime">
+
+    <d3-availability-chart></d3-availability-chart>
     <div class="number-box-container">
-        <span class="dm-block dm-report-name">Last Downtime</span>
         <div class="medium-number-box-200" id="last-downtime-number-box">
             <span class="number-display">
                 <p class="dm-main-chart-info-header">DOWNTIME</p>
@@ -15,19 +16,6 @@
                 <p class="bg-line-height">{{uptimePercentage}}%</p>
             </span>
         </div>
-    </div>
-
-    <div class="chart-container">
-        <div class="dm-btn-container">
-            <a href="#" class="dm-button dm-button-small dm-button-flr" id="downtime-5min-btn">5 min</a>
-            <a href="#" class="dm-button dm-button-small dm-button-flr" id="downtime-30min-btn">30 min</a>
-            <a href="#" class="dm-button dm-button-small dm-button-flr" id="downtime-custom-btn">custom</a>
-            <div class="clear"></div>
-        </div>
-        <div class="dm-chart" id="last-downtime-chart">
-            <d3-availability-chart></d3-availability-chart>
-        </div>
-        <div class="clear"></div>
     </div>
     <div class="clear"></div>
 </div>

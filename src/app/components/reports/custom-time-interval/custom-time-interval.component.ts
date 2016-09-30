@@ -2,14 +2,31 @@
  * Created by vcernomschi on 9/28/16.
  */
 
-import {Component} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TimepickerComponent } from 'ng2-bootstrap/ng2-bootstrap';
+import { ControlValueAccessor } from '@angular/forms';
 
 @Component({
     selector: 'dm-custom-time-interval',
     templateUrl: './custom-time-interval.html',
     styleUrls: ['./custom-time-interval.css'],
 })
-export class CustomTimeIntervalComponent {
+export class CustomTimeIntervalComponent implements ControlValueAccessor, OnInit {
+    setDisabledState(isDisabled: boolean): void {
+        console.log('setDisabledState')
+    }
+    registerOnTouched(fn: any): void {
+    }
+
+    ngOnInit(): void {
+    }
+
+    registerOnChange(fn: any): void {
+    }
+    writeValue(obj: any): void {
+    }
+
+    @Input() private showWeeks:boolean = false;
     public isCollapsed: boolean = true;
 
     public startedDate: Date = new Date();
@@ -28,7 +45,6 @@ export class CustomTimeIntervalComponent {
 
     public customClass: Array<{date: Date, mode: string, clazz: string}> = [];
     public dateDisabled: Array<{date: Date, mode: string}> = [];
-    public showWeeks: boolean = false;
 
     public constructor() {
         (this.startedDate = new Date()).setDate(this.startedDate.getDate() - 1);

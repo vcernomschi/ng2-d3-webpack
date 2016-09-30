@@ -4,7 +4,8 @@
 
 import {Component} from '@angular/core';
 import '../../../../public/css/styles.css';
-
+import '../../../../node_modules/loaders.css/loaders.min.css';
+import '../../../../node_modules/chart.js/dist/Chart.bundle.min.js';
 
 @Component({
     selector: 'my-app',
