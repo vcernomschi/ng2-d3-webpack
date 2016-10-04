@@ -106,11 +106,11 @@
     ],
     "directive-selector-prefix": [
       true,
-      "sg"
+      "dm"
     ],
     "component-selector-prefix": [
       true,
-      "sg"
+      "dm"
     ],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
@@ -124,7 +124,7 @@
     "pipe-naming": [
       true,
       "camelCase",
-      "sg"
+      "dm"
     ],
     "component-class-suffix": true,
     "directive-class-suffix": true,

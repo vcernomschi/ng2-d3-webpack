@@ -82,4 +82,9 @@ export class CustomTimeIntervalComponent implements ControlValueAccessor, OnInit
     public getEndDate(): number {
         return this.endDate && this.endDate.getTime() || new Date().getTime();
     }
+
+    public datePickerChanged(e: Event): void {
+        e.preventDefault();
+        e.stopPropagation();
+    }
 }

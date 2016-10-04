@@ -6,11 +6,21 @@
 
 body {
     margin: 0;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 20px;
     color: #333;
     background-color: #fff;
+}
+
+main {
+    padding: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    display: block;
+    background: #333;
+    color: white
 }
 
 svg {
@@ -25,7 +35,8 @@ text {
 .dm-container {
     margin-right: auto;
     margin-left: auto;
-    width: 940px;
+    width: 100%;
+    padding: 0 80px;
 }
 
 .dm-container * {
@@ -38,9 +49,16 @@ text {
     line-height: 0;
     content: "";
 }
+
 /*Pseudo ::after element*/
 .dm-container:after {
     clear: both;
+}
+
+.number-display {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .clear {
@@ -55,12 +73,6 @@ text {
     margin: 0px;
 }
 
-.chart-container {
-    float: right;
-    width: calc(100% - 230px);
-
-}
-
 .dm-chart {
     border: 1px solid #e7e7e7;
     background-color: #F7F7F7;
@@ -70,12 +82,12 @@ text {
     height: 100%;
 }
 
-.dm-report-container{
-    /*margin-right: 30px;*/
+.dm-report-container {
+    margin-right: 10px;
 }
 
 .dm-button-flr + .dm-button-flr {
-    margin-right: .5em;
+    margin-right: 0em;
 }
 
 .dm-button + .dm-button {
@@ -111,11 +123,6 @@ text {
 
 .dm-button:hover {
     background-color: #666;
-}
-
-.number-box-container {
-    width: 220px;
-    float: left;
 }
 
 /*FOR CHARTS WITH HEIGHT 200*/
@@ -196,11 +203,9 @@ text {
     background-color: #F7F7F7;
     border-radius: 5px;
     width: 100%;
+    height: 100%;
     font-size: 48px;
     text-align: center;
-    padding-top: 50px;
-    padding-bottom: 20px;
-    height: 135px;
     line-height: normal;
     margin-bottom: 8px;
 }
@@ -236,7 +241,6 @@ text {
     line-height: 100%;
 }
 
-
 .dm-block {
     display: block;
 }
@@ -247,7 +251,7 @@ text {
     font-family: Pingvetica, "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
 }
 
-.dm-report-name{
+.dm-report-name {
     color: #333;
     font-size: 18px;
     font-weight: 300;
@@ -270,7 +274,7 @@ text {
 .dm-main-chart-outages {
     font-size: 12px;
     list-style-type: none;
-    font-weight : 400;
+    font-weight: 400;
     font-style: normal;
     padding-top: 0px;
     margin-top: -6px;
@@ -326,16 +330,6 @@ text {
     background-color: #3498db !important;
 }
 
-pre.dm-date-interval {
-    display: block;
-    padding: 20px 9.5px 0px 9.5px;
-    margin: 0 0 -27px;
-    font-size: 13px;
-    color: #333;
-    border: none;
-    background-color: transparent;
-}
-
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);
@@ -385,7 +379,7 @@ pre.dm-date-interval {
     }
 }
 
-.dm-chart-name{
+.dm-chart-name {
     color: #333;
     font-size: 16px;
     font-weight: 300;
@@ -440,34 +434,105 @@ div.well:before, div.well:after {
     clear: both;
 }
 
-@media only screen and (max-width: 749px){
+.flex-btn-container {
+    display: flex;
+    width: 100%;
+}
+
+.flex-time-interval {
+    flex: 1 0 75%;
+    order: 1;
+}
+
+.flex-chart-type-btn {
+    flex: 0 0 25%;
+    order: 2;
+    max-width: 202px;
+    min-width: 202px;
+}
+
+/*.flex-time-interval-btn {*/
+/*flex: 0 0 10%;*/
+/*order: 2;*/
+/*}*/
+
+/*.flex-drop-down {*/
+/*flex: 0 0 10%;*/
+/*order: 3;*/
+/*}*/
+
+.flex-container {
+    display: flex;
+    width: 100%;
+}
+
+.flex-report-header {
+    flex: 0 0 25%;
+    max-width: 25%;
+    order: 1;
+}
+
+.small-top-padding {
+    padding-top: 10px;
+}
+
+.small-left-padding {
+    padding-left: 10px;
+}
+
+.small-bottom-padding {
+    padding-bottom: 10px;
+}
+
+.small-right-padding {
+    padding-right: 10px;
+}
+
+.flex-numbers {
+    flex: 0 0 25%;
+    max-width: 25%;
+    order: 1;
+    margin-right: 5px;
+    box-sizing: border-box;
+}
+
+.flex-charts {
+    flex: 0 0 75%;
+    max-width: 75%;
+    order: 2;
+    margin-left: 5px;
+    box-sizing: border-box;
+}
+
+.left-float {
+    float: left;
+}
+
+@media only screen and (max-width: 749px) {
     /* For mobile phones: */
-    .chart-container {
-        display: none;
-    }
-
-    .number-box-container {
-        float: none;
-        margin: 0 auto;
-    }
-
+    /*.chart-container {*/
+    /*display: none;*/
+    /*}*/
+    /*.number-box-container {*/
+    /*float: none;*/
+    /*margin: 0 auto;*/
+    /*}*/
     .dm-container {
-        width: 100%;
+        padding: 0 30px;
     }
 
 }
 
-@media (min-width: 750px ) and (max-width: 950px){
+@media (min-width: 750px ) and (max-width: 1024px) {
 
     .dm-container {
-        width: 100%;
-        padding: 0 10px;
+        padding: 0 80px;
     }
 
-    .chart-container {
-        float: right;
-        width: calc(100% - 230px);
-        height: 185px;
-    }
+    /*.chart-container {*/
+    /*float: right;*/
+    /*width: calc(100% - 230px);*/
+    /*height: 185px;*/
+    /*}*/
 
 }

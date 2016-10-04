@@ -1,0 +1,36 @@
+<div>
+    <div class="left-float small-right-padding" dropdown keyboardNav="true"
+         (click)="dropdownChanged($event)">
+        <button id="simple-btn-keyboard-nav" type="button" class="btn btn-primary dm-button-flr"
+                dropdownToggle>
+            Select <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+            <li role="menuitem"><a class="dropdown-item" href="#">Last Month</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Last Week</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Last 2 Days</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Last 24 hours</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Last 1 hour</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Last 30 min</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Last 15 min</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Last 5 min</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Last 1 min</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Last 1 sec</a></li>
+        </ul>
+    </div>
+    <button type="button" class="btn btn-primary left-float"
+            (click)="isCollapsed = !isCollapsed"><i class="glyphicon glyphicon-calendar"></i> Custom
+    </button>
+    <pre class="dm-date-interval">From: <em *ngIf="startedDate">{{ getStartedDate() | date:'shortDate'}}</em> To <em
+            *ngIf="endDate">{{ getEndDate() | date:'shortDate'}}</em></pre>
+    <div (collapsed)="collapsed($event)"
+         (expanded)="expanded($event)"
+         [collapse]="isCollapsed"
+         class="card card-block card-header border-box">
+
+        <div class="datepicker-container" (click)="datePickerChanged($event)">
+            <datepicker [(ngModel)]="startedDate" [minDate]="minDate" [showWeeks]></datepicker>
+            <datepicker [(ngModel)]="endDate" [minDate]="startedDate"></datepicker>
+        </div>
+    </div>
+</div>

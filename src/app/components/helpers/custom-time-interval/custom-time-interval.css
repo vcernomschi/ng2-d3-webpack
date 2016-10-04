@@ -1,0 +1,10 @@
+pre.dm-date-interval {
+    text-align: center;
+    display: block;
+    padding: 20px 0px 0px 0px;
+    margin: 0 10px -27px 0px;
+    font-size: 13px;
+    color: #333;
+    border: none;
+    background-color: transparent;
+}

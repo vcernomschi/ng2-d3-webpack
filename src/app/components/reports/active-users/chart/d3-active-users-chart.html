@@ -1,36 +1,55 @@
-<div class="dm-btn-container" (click)="clicked($event)">
-    <div class="dm-report-header">
-        <div class="number-box-container">
+<div class="dm-report-container" id="rigth-now">
+    <div class="flex-container small-top-padding">
+        <div class="flex-numbers">
             <span class="dm-block dm-report-name">Rigth Now</span>
         </div>
-        <div class="chart-container">
-            <div class="btn-group dm-button-flr margin-left-10" dropdown keyboardNav="true">
-                <button id="simple-btn-keyboard-nav" type="button" class="btn btn-default dm-grey dm-button-flr"
-                        dropdownToggle>
-                    Select <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
-                    <li role="menuitem"><a class="dropdown-item" href="#">Last Month</a></li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Last Week</a></li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Last 2 Days</a></li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Last 24 hours</a></li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Last 1 hour</a></li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Last 30 min</a></li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Last 15 min</a></li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Last 5 min</a></li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Last 1 min</a></li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Last 1 sec</a></li>
-                </ul>
+        <div class="flex-charts">
+            <div class="flex-btn-container">
+                <div class="flex-time-interval">
+                    <dm-custom-time-interval></dm-custom-time-interval>
+                </div>
+                <div class="flex-chart-type-btn">
+                    <div class="btn-group" (click)="changeChartType($event)">
+                        <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="line">
+                            <i class="fa fa-line-chart" aria-hidden="true"></i> Line</label>
+                        <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="bar">
+                            <i class="fa fa-bar-chart" aria-hidden="true"></i> Bar</label>
+                        <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="pie">
+                            <i class="fa fa-pie-chart" aria-hidden="true"></i> Pie</label>
+                    </div>
+                    <div class="clear"></div>
+                </div>
             </div>
-            <dm-custom-time-interval></dm-custom-time-interval>
         </div>
     </div>
-    <div class="clear"></div>
-</div>
-<div class="chart-container">
-    <div class="dm-chart" id="right-now-chart">
-        <div class="dm-chart-name">{{chartTitle}}</div>
-        <svg></svg>
+    <div class="flex-container">
+        <div class="flex-numbers">
+            <d3-active-users></d3-active-users>
+        </div>
+        <div class="flex-charts">
+            <div class="dm-chart" id="right-now-chart">
+                <div class="dm-chart-name">{{chartTitle}}</div>
+                <div *ngIf="isLineChart">
+                    <base-chart class="chart"
+                                [datasets]="lineChartData"
+                                [labels]="lineChartLabels"
+                                [options]="lineChartOptions"
+                                [chartType]="chartType"
+                                (chartHover)="chartHovered($event)"
+                                (chartClick)="chartClicked($event)">
+                    </base-chart>
+                </div>
+                <div *ngIf="isPieChart">
+                    <base-chart class="chart"
+                                [data]="pieChartData"
+                                [labels]="pieChartLabels"
+                                [chartType]="pieChartType"
+                                (chartHover)="chartHovered($event)"
+                                (chartClick)="chartClicked($event)">
+                    </base-chart>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
     </div>
-    <div class="clear"></div>
 </div>
