@@ -1,7 +1,7 @@
 <div class="dm-report-container" id="rigth-now">
     <div class="flex-container small-top-padding">
         <div class="flex-numbers">
-            <span class="dm-block dm-report-name">Rigth Now</span>
+            <span class="dm-block dm-report-name">Cloud Trail</span>
         </div>
         <div class="flex-charts">
             <div class="flex-btn-container">
@@ -9,7 +9,10 @@
                     <dm-custom-time-interval></dm-custom-time-interval>
                 </div>
                 <div class="flex-chart-type-btn">
-                    <div class="btn-group" (click)="changeChartType($event)">
+                    <!--<div class="right small-left-padding">-->
+                    <!--<button type="button" class="btn btn-primary">Details</button>-->
+                    <!--</div>-->
+                    <div class="btn-group right" (click)="changeChartType($event)">
                         <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="line">
                             <i class="fa fa-line-chart" aria-hidden="true"></i> Line</label>
                         <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="bar">
@@ -24,7 +27,7 @@
     </div>
     <div class="flex-container">
         <div class="flex-numbers">
-            <d3-active-users></d3-active-users>
+            <dm-cloud-trail></dm-cloud-trail>
         </div>
         <div class="flex-charts">
             <div class="dm-chart" id="right-now-chart">

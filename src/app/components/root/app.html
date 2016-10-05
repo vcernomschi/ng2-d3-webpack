@@ -1,0 +1,26 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Deep Monitoring</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Availability
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Gantt</a></li>
+                    <li><a href="#">Unscramble process</a></li>
+                    <li><a href="/availability">Other</a></li>
+                </ul>
+            </li>
+            <li><a href="/active-users">Active Users</a></li>
+            <li><a href="/debugging have">Debugging</a></li>
+            <li><a href="/services">AWS Services Costs</a></li>
+            <li><a href="/cloud-trail">Cloud Trail</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="dm-container">
+    <router-outlet></router-outlet>
+</div>

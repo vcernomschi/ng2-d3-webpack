@@ -1,0 +1,19 @@
+@media (min-width: 750px ) and (max-width: 1024px) {
+
+    .dm-container {
+        padding: 0 80px;
+    }
+
+    /*.chart-container {*/
+    /*float: right;*/
+    /*width: calc(100% - 230px);*/
+    /*height: 185px;*/
+    /*}*/
+
+}
+
+@media (min-width: 768px) {
+    .navbar {
+        border-radius: 0px;
+    }
+}

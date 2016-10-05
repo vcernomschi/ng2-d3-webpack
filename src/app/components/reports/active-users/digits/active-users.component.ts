@@ -5,9 +5,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-    selector: 'd3-active-users',
-    templateUrl: './d3-active-users.html',
+    selector: 'dm-active-users',
+    templateUrl: './active-users.html',
 })
-export class D3ActiveUsersComponent {
+export class ActiveUsersComponent {
     public activeUsersNumber: number = 8;
 }

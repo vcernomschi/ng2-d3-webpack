@@ -8,10 +8,10 @@ import { ActiveUsersService } from '../../../../services/index'
 
 
 @Component({
-  selector: 'd3-active-users-chart',
-  templateUrl: './d3-active-users-chart.html',
+  selector: 'dm-active-users-chart',
+  templateUrl: './active-users-chart.html',
 })
-export class D3ActiveUsersChartComponent implements OnInit {
+export class ActiveUsersChartComponent implements OnInit {
   @ViewChild(CustomTimeIntervalComponent)
   private chartInterval: CustomTimeIntervalComponent;
   private chartModel: {line: boolean, bar: boolean, pie: boolean} = {line: true, bar: true, pie: true};

@@ -1,0 +1,14 @@
+@media only screen and (max-width: 749px) {
+    /* For mobile phones: */
+    /*.chart-container {*/
+    /*display: none;*/
+    /*}*/
+    /*.number-box-container {*/
+    /*float: none;*/
+    /*margin: 0 auto;*/
+    /*}*/
+    .dm-container {
+        padding: 0 30px;
+    }
+
+}

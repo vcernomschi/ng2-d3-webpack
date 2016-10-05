@@ -16,7 +16,6 @@ export class ActiveUsersService {
    * @returns {any|{}}
    */
   private extractData(res: Response) {
-    console.log('res: ', res);
     let body = res.json();
     return body.data || { };
   }
