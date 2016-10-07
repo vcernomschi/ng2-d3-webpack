@@ -58,8 +58,9 @@ base-chart {
     margin: 0px;
 }
 
-div.tiny-box p {
-    margin: 10px 0 10px 0;
+div.tiny-box {
+    padding-top: 22px;
+    line-height: 50%;
 }
 
 .dm-chart {
@@ -398,17 +399,14 @@ div.well:before, div.well:after {
 }
 
 .flex-time-interval {
-    flex: 1 0 75%;
+    flex: 0 0 70%;
     order: 1;
 }
 
 .flex-chart-type-btn {
-    flex: 0 0 25%;
+    flex: 1 0 30%;
     order: 2;
-    max-width: 202px;
-    min-width: 202px;
-    /*max-width: 280px;*/
-    /*min-width: 280px;*/
+    max-width: 30%;
 }
 
 /*.flex-time-interval-btn {*/
