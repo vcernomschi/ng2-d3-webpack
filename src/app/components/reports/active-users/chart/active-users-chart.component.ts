@@ -31,8 +31,9 @@ export class ActiveUsersChartComponent implements OnInit {
   public radioModel: string = 'line';
   public pieChartLabels: string[];
   public pieChartData: number[];
-  public lineChartOptions: any = {
+  public chartOptions: any = {
     responsive: true,
+    maintainAspectRatio: false,
   };
 
   constructor(private activeUsersService: ActiveUsersService) {
@@ -48,7 +49,7 @@ export class ActiveUsersChartComponent implements OnInit {
     this.activeUsersService.getActiveUsers()
       .subscribe(
         users => this.activeUsers = users,
-        error =>  this.errorMessage = <any>error);
+        error => this.errorMessage = <any>error);
   }
 
   /**

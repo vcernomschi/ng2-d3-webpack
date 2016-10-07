@@ -5,9 +5,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'dm-services-details',
+  selector: 'dm-aws-services-details',
   templateUrl: './services-details.html',
 })
-export class ServicesDetailsComponent {
+export class AwsServicesDetailsComponent {
   public title: string = 'Services Details';
 }

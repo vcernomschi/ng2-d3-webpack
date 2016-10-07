@@ -1,7 +1,7 @@
 <div class="dm-report-container" id="rigth-now">
   <div class="flex-container small-top-padding">
     <div class="flex-numbers">
-      <span class="dm-block dm-report-name">Rigth Now</span>
+      <span class="dm-block dm-report-name">Availability</span>
     </div>
     <div class="flex-charts">
       <div class="flex-btn-container">
@@ -9,9 +9,6 @@
           <dm-custom-time-interval></dm-custom-time-interval>
         </div>
         <div class="flex-chart-type-btn">
-          <!--<div class="right small-left-padding">-->
-          <!--<button type="button" class="btn btn-primary">Details</button>-->
-          <!--</div>-->
           <div class="btn-group right" (click)="changeChartType($event)">
             <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="line">
               <i class="fa fa-line-chart" aria-hidden="true"></i> Line</label>
@@ -27,7 +24,7 @@
   </div>
   <div class="flex-container">
     <div class="flex-numbers">
-      <dm-active-users></dm-active-users>
+      <dm-availability></dm-availability>
     </div>
     <div class="flex-charts">
       <div class="dm-chart" id="right-now-chart">
@@ -38,6 +35,7 @@
                       [labels]="lineChartLabels"
                       [options]="chartOptions"
                       [chartType]="chartType"
+                      [colors]="chartColors"
                       (chartHover)="chartHovered($event)"
                       (chartClick)="chartClicked($event)">
           </base-chart>
@@ -47,6 +45,7 @@
                       [data]="pieChartData"
                       [labels]="pieChartLabels"
                       [options]="chartOptions"
+                      [colors]="pieChartColors"
                       [chartType]="pieChartType"
                       (chartHover)="chartHovered($event)"
                       (chartClick)="chartClicked($event)">
@@ -57,3 +56,4 @@
     </div>
   </div>
 </div>
+<!--<loaders-css [loader]="'line-spin-fade-loader'" [loaderClass]="'my-loader' [hidden]"></loaders-css>-->

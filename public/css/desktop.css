@@ -13,23 +13,8 @@ body {
     background-color: #fff;
 }
 
-main {
-    padding: 1em;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    margin-top: 50px;
-    display: block;
-    background: #333;
-    color: white
-}
-
-svg {
-    width: 100%;
-    height: 100%;
-}
-
-text {
-    fill: #999;
+base-chart {
+    height: 200px;
 }
 
 .dm-container {
@@ -71,6 +56,10 @@ text {
     font-weight: 300;
     font-style: normal;
     margin: 0px;
+}
+
+div.tiny-box p {
+    margin: 10px 0 10px 0;
 }
 
 .dm-chart {
@@ -126,7 +115,7 @@ text {
 }
 
 /*FOR CHARTS WITH HEIGHT 200*/
-.small-number-box-200 {
+.small-number-box {
     border: 1px solid #e7e7e7;
     background-color: #F7F7F7;
     border-radius: 5px;
@@ -184,55 +173,25 @@ text {
     float: left !important;
 }
 
-.medium-number-box-200 {
+.medium-number-box {
     border: 1px solid #e7e7e7;
     background-color: #F7F7F7;
     border-radius: 5px;
     width: 100%;
-    font-size: 28px;
+    height: 50%;
+    font-size: 36px;
     text-align: center;
-    padding-top: 20px;
-    padding-bottom: 50px;
-    height: 27px;
-    line-height: 50%;
-    margin-bottom: 8px;
+    line-height: normal;
 }
 
-.large-number-box-200 {
+.large-number-box {
     border: 1px solid #e7e7e7;
     background-color: #F7F7F7;
     border-radius: 5px;
     width: 100%;
     height: 100%;
-    font-size: 48px;
+    font-size: 64px;
     text-align: center;
-    line-height: normal;
-    margin-bottom: 8px;
-}
-
-/*FOR CHARTS WITH HEIGHT 250*/
-.medium-number-box-250 {
-    border: 1px solid #e7e7e7;
-    background-color: #F7F7F7;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 48px;
-    text-align: center;
-    padding: 35px 0;
-    height: 52px;
-    line-height: normal;
-    margin-bottom: 8px;
-}
-
-.large-number-box-250 {
-    border: 1px solid #e7e7e7;
-    background-color: #F7F7F7;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 48px;
-    text-align: center;
-    padding: 35px 0;
-    height: 185px;
     line-height: normal;
     margin-bottom: 8px;
 }
@@ -280,11 +239,15 @@ text {
     margin-top: -6px;
 }
 
-.red {
+.number-bottom-margin {
+    margin-bottom: 8px;
+}
+
+.red-numbers {
     color: red;
 }
 
-.orange {
+.orange-numbers {
     color: orange;
 }
 
@@ -421,11 +384,6 @@ div.well {
 
 .datepicker-container {
     margin-top: 29px;
-}
-
-.base-chart {
-    width: 710px !important;
-    height: 250px !important;
 }
 
 div.well:before, div.well:after {

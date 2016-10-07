@@ -3,13 +3,13 @@
  */
 
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from "../components/root/home/home.component";
+import { HomeComponent } from '../components/root/home/home.component';
 import {
   ActiveUsersDetailsComponent,
   AvailabilityDetailsComponent,
   CloudTrailDetailsComponent,
   DebuggingDetailsComponent,
-  ServicesDetailsComponent,
+  AwsServicesDetailsComponent,
 } from '../components';
 
 const APP_ROUTES: Routes = [
@@ -17,7 +17,7 @@ const APP_ROUTES: Routes = [
   {path: 'availability', component: AvailabilityDetailsComponent},
   {path: 'cloud-trail', component: CloudTrailDetailsComponent},
   {path: 'debugging', component: DebuggingDetailsComponent},
-  {path: 'services', component: ServicesDetailsComponent},
+  {path: 'services', component: AwsServicesDetailsComponent},
   {path: '', component: HomeComponent},
 ];
 

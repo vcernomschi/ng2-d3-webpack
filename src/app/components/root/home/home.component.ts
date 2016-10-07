@@ -13,5 +13,5 @@ import { ActiveUsersService } from './../../../services/index';
   ],
 })
 export class HomeComponent {
-  public title: string = 'Home page'
+  public title: string = 'Home page';
 }

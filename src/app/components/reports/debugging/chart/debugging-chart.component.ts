@@ -2,46 +2,79 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { CustomTimeIntervalComponent } from '../../../helpers/index';
 
 @Component({
-  selector: 'dm-cloud-trail-chart',
-  templateUrl: './cloud-trail-chart.html',
+  selector: 'dm-debugging-chart',
+  templateUrl: './debugging-chart.html',
 })
-export class CloudTrailChartComponent implements OnInit {
+export class DebuggingChartComponent implements OnInit {
   @ViewChild(CustomTimeIntervalComponent)
   private chartInterval: CustomTimeIntervalComponent;
   private chartModel: {line: boolean, bar: boolean, pie: boolean} = {line: true, bar: true, pie: true};
   private errorMessage: string;
-  private recordsNumber: any[];
+  private errorsNumber: any[];
+  private warningsNumber: any[];
 
   // @todo - get this from Elastic Search
   public lineChartData: Array<{data: Array<number[]> | number[], label: string}> = [
-    {data: [1, 54, 80, 10, 82, 20, 58], label: 'Numbe of Records'},
-
+    {data: [4, 5, 2, 0, 1, 2, 10], label: 'Errors'},
+    {data: [20, 30, 21, 45, 23, 40, 40], label: 'Warnings'},
   ];
   public lineChartLabels: Array < any > = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public pieChartType: string = 'pie';
   public chartType = 'line';
   public radioModel: string = 'line';
   public pieChartLabels: string[];
-  public pieChartData: number[];
+  public pieChartData: Array<any>;
   public chartOptions: any = {
     responsive: true,
     maintainAspectRatio: false,
   };
 
+  public pieChartColors: Array<any> = [
+    {backgroundColor: ["#e11414", "#ffa500"]},
+    {hoverBorderColor: ["#e11414", "#ffa500"]},
+  ];
+
+  public chartColors: Array<any> = [
+    { //red
+      backgroundColor: 'rgba(225, 20, 20, 0.2)',
+      borderColor: 'rgba(225, 20, 20, 1)',
+      pointBackgroundColor: 'rgba(225, 20, 20, 0.2)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(225, 20, 20, 0.8)',
+    },
+    { //orange
+      backgroundColor: 'rgba(255,165,0,0.2)',
+      borderColor: 'rgba(255,165,0,1)',
+      pointBackgroundColor: 'rgba(255,165,0,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(255,165,0,0.8)',
+    }
+  ];
+
   //@todo - implement CloudTrailService
-  // constructor(private cloudTrailService: CloudTrailService) {
+  // constructor(private debugService: DebugService) {
   // }
 
   ngOnInit(): void {
     this.pieChartLabels = this.getPieChartLabels();
     this.pieChartData = this.getPieChartData();
-    // this.getRecordsNumber();
+    // this.getErrorsNumber();
+    // this.getWarningsNumber();
   }
 
-  // getRecordsNumber() {
-  //     this.cloudTrailService.getRecordsNumber()
+  // getErrorsNumber() {
+  //     this.debuggingService.getErrorsNumber()
   //       .subscribe(
-  //         users => this.recordsNumber = users,
+  //         errorsNumber => this.errorsNumber = errorsNumber,
+  //         error =>  this.errorMessage = <any>error);
+  // }
+
+  // getWarningsNumber() {
+  //     this.debuggingService.getWarningsNumber()
+  //       .subscribe(
+  //         warningsNumber => this.warningsNumber = warningsNumber,
   //         error =>  this.errorMessage = <any>error);
   // }
 

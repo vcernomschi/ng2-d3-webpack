@@ -2,46 +2,69 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { CustomTimeIntervalComponent } from '../../../helpers/index';
 
 @Component({
-  selector: 'dm-cloud-trail-chart',
-  templateUrl: './cloud-trail-chart.html',
+  selector: 'dm-availability-chart',
+  templateUrl: './availability-chart.html',
 })
-export class CloudTrailChartComponent implements OnInit {
+export class AvailabilityChartComponent implements OnInit {
   @ViewChild(CustomTimeIntervalComponent)
   private chartInterval: CustomTimeIntervalComponent;
   private chartModel: {line: boolean, bar: boolean, pie: boolean} = {line: true, bar: true, pie: true};
   private errorMessage: string;
-  private recordsNumber: any[];
+  private errorsNumber: any[];
 
   // @todo - get this from Elastic Search
   public lineChartData: Array<{data: Array<number[]> | number[], label: string}> = [
-    {data: [1, 54, 80, 10, 82, 20, 58], label: 'Numbe of Records'},
-
+    {data: [2000, 3000, 1200, 980, 3222, 1500, 1000], label: 'Response time'},
   ];
   public lineChartLabels: Array < any > = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public pieChartType: string = 'pie';
   public chartType = 'line';
   public radioModel: string = 'line';
   public pieChartLabels: string[];
-  public pieChartData: number[];
+  public pieChartData: Array<any>;
   public chartOptions: any = {
     responsive: true,
     maintainAspectRatio: false,
   };
 
+  public pieChartColors: Array<any> = [
+    {backgroundColor: ["#27ad27"]},
+    {hoverBorderColor: ["#e11414"]},
+  ];
+
+  public chartColors: Array<any> = [
+    { //green
+      backgroundColor: 'rgba(39, 173, 39, 0.2)',
+      borderColor: 'rgba(39, 173, 39, 1)',
+      pointBackgroundColor: 'rgba(39, 173, 39, 0.2)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(39, 173, 39, 0.8)',
+    },
+  ];
+
   //@todo - implement CloudTrailService
-  // constructor(private cloudTrailService: CloudTrailService) {
+  // constructor(private debugService: DebugService) {
   // }
 
   ngOnInit(): void {
     this.pieChartLabels = this.getPieChartLabels();
     this.pieChartData = this.getPieChartData();
-    // this.getRecordsNumber();
+    // this.getErrorsNumber();
+    // this.getWarningsNumber();
   }
 
-  // getRecordsNumber() {
-  //     this.cloudTrailService.getRecordsNumber()
+  // getErrorsNumber() {
+  //     this.debuggingService.getErrorsNumber()
   //       .subscribe(
-  //         users => this.recordsNumber = users,
+  //         errorsNumber => this.errorsNumber = errorsNumber,
+  //         error =>  this.errorMessage = <any>error);
+  // }
+
+  // getWarningsNumber() {
+  //     this.debuggingService.getWarningsNumber()
+  //       .subscribe(
+  //         warningsNumber => this.warningsNumber = warningsNumber,
   //         error =>  this.errorMessage = <any>error);
   // }
 
