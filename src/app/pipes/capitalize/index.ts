@@ -1,0 +1,1 @@
+export { DmCapitalizePipe } from './capitalize.pipe';

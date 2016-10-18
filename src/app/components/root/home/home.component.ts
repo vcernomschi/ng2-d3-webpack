@@ -3,13 +3,13 @@
  */
 
 import { Component } from '@angular/core';
-import { ActiveUsersService } from './../../../services/index';
+import { DataProviderService } from './../../../services/index';
 
 @Component({
   selector: 'dm-home',
   templateUrl: './home.html',
   providers: [
-    ActiveUsersService,
+    DataProviderService,
   ],
 })
 export class HomeComponent {

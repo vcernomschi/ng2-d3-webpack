@@ -2,19 +2,26 @@
  * Created by vcernomschi on 9/23/16.
  */
 
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { CustomTimeIntervalComponent } from '../../../helpers/index';
-import { ActiveUsersService } from '../../../../services/index'
-
+import { DataProviderService } from '../../../../services/index';
 
 @Component({
   selector: 'dm-active-users-chart',
   templateUrl: './active-users-chart.html',
 })
-export class ActiveUsersChartComponent implements OnInit {
+export class ActiveUsersChartComponent implements OnInit, AfterViewInit {
+
+  private reportHeader: string = 'Right Now';
+
   @ViewChild(CustomTimeIntervalComponent)
   private chartInterval: CustomTimeIntervalComponent;
-  private chartModel: {line: boolean, bar: boolean, pie: boolean} = {line: true, bar: true, pie: true};
+
+  private implementedChartModel: Array<{type: string, status: boolean}> = [
+    {type: 'line', status: true},
+    {type: 'bar', status: true},
+    {type: 'pie', status: true},
+  ];
   private errorMessage: string;
   private activeUsers: any[];
 
@@ -31,12 +38,14 @@ export class ActiveUsersChartComponent implements OnInit {
   public radioModel: string = 'line';
   public pieChartLabels: string[];
   public pieChartData: number[];
+
   public chartOptions: any = {
     responsive: true,
     maintainAspectRatio: false,
   };
 
-  constructor(private activeUsersService: ActiveUsersService) {
+  constructor(private dataProviderService: DataProviderService) {
+    // console.log('chartInterval: ', this.chartInterval);
   }
 
   ngOnInit(): void {
@@ -45,11 +54,21 @@ export class ActiveUsersChartComponent implements OnInit {
     this.getActiveUsers();
   }
 
-  getActiveUsers() {
-    this.activeUsersService.getActiveUsers()
+  ngAfterViewInit(): void {
+    this.chartInterval.chartHeader = this.reportHeader;
+    console.log('chartInterval: ', this.chartInterval.chartHeader);
+  }
+
+  getActiveUsers(): void {
+    let params: Array<{key: string, value: string}> = [
+      {key: 'sort', value: 'time:asc'},
+    ];
+
+    this.dataProviderService.getData(params)
       .subscribe(
         users => this.activeUsers = users,
-        error => this.errorMessage = <any>error);
+        error => this.errorMessage = error
+      );
   }
 
   /**
@@ -66,14 +85,6 @@ export class ActiveUsersChartComponent implements OnInit {
    */
   public get isPieChart(): boolean {
     return this.chartType === 'pie';
-  }
-
-  /**
-   * @param chartType {String}
-   * @returns {boolean}
-   */
-  public isChartImplemented(chartType: string): boolean {
-    return !!(this.chartModel[chartType]);
   }
 
   /**
@@ -134,19 +145,18 @@ export class ActiveUsersChartComponent implements OnInit {
   }
 
   /**
-   * @todo - disable button if chart is not implemented
    * @param e {Event}
    */
-  public changeChartType(e: any): void {
+  public redrawChart(e: string): void {
 
-    this.radioModel = this.chartType = this.isChartImplemented(this.radioModel) ? this.radioModel : this.chartType;
+    console.log('PARENT INPUT: ', e);
 
-    e.stopPropagation();
-  }
+    if (this.chartType === e) {
+      return;
+    }
 
-  public dropdownChanged(e: Event): void {
-    console.log('dropdownChanged e: ', e);
-    e.preventDefault();
-    e.stopPropagation();
+    this.chartType = e;
+
+    console.log('CHANGED: ', e);
   }
 }

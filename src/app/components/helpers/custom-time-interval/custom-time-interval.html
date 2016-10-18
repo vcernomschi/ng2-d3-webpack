@@ -1,11 +1,18 @@
-<div>
-    <div class="left-float small-right-padding" dropdown keyboardNav="true"
-         (click)="dropdownChanged($event)">
-        <button id="simple-btn-keyboard-nav" type="button" class="btn btn-primary dm-button-flr"
-                dropdownToggle>
-            Select <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+<div class="flex-container small-top-padding">
+  <div class="flex-numbers">
+    <span class="dm-block dm-report-name">{{chartHeader}}</span>
+  </div>
+  <div class="flex-charts">
+    <div class="flex-btn-container">
+      <div class="flex-time-interval">
+        <div class="left-float small-right-padding" dropdown keyboardNav="true"
+             (click)="dropdownChanged($event)">
+          <button
+              id="simple-btn-keyboard-nav"
+              type="button"
+              class="btn btn-primary dm-button-flr" dropdownToggle>{{dropdownSelected}} <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
             <li role="menuitem"><a class="dropdown-item" href="#">Last Month</a></li>
             <li role="menuitem"><a class="dropdown-item" href="#">Last Week</a></li>
             <li role="menuitem"><a class="dropdown-item" href="#">Last 2 Days</a></li>
@@ -16,21 +23,63 @@
             <li role="menuitem"><a class="dropdown-item" href="#">Last 5 min</a></li>
             <li role="menuitem"><a class="dropdown-item" href="#">Last 1 min</a></li>
             <li role="menuitem"><a class="dropdown-item" href="#">Last 1 sec</a></li>
-        </ul>
-    </div>
-    <button type="button" class="btn btn-primary left-float"
-            (click)="isCollapsed = !isCollapsed"><i class="glyphicon glyphicon-calendar"></i> Custom
-    </button>
-    <pre class="dm-date-interval">From: <em *ngIf="startedDate">{{ getStartedDate() | date:'shortDate'}}</em> To <em
-            *ngIf="endDate">{{ getEndDate() | date:'shortDate'}}</em></pre>
-    <div (collapsed)="collapsed($event)"
-         (expanded)="expanded($event)"
-         [collapse]="isCollapsed"
-         class="card card-block card-header border-box">
-
-        <div class="datepicker-container" (click)="datePickerChanged($event)">
-            <datepicker [(ngModel)]="startedDate" [minDate]="minDate" [showWeeks]></datepicker>
-            <datepicker [(ngModel)]="endDate" [minDate]="startedDate"></datepicker>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">
+                <i class="glyphicon glyphicon-calendar"></i> Custom
+              </a>
+            </li>
+          </ul>
         </div>
+        <pre class="dm-date-interval alert alert-info">From: <em *ngIf="startTime">{{ startTime | date:'shortDate'}}</em> To <em
+            *ngIf="endTime">{{ endTime | date:'shortDate'}}</em></pre>
+      </div>
+      <div class="flex-chart-type-btn">
+        <div class="right chart-nav">
+          <div class="btn-group" (click)="onChangeChartType($event)">
+            <label class="btn btn-primary" *ngFor="let chart of chartModel" [(ngModel)]="radioModel"
+                   btnRadio="{{chart.type}}" disabled="{{!isChartImplemented(chart.type)}}">
+              <i class="fa fa-{{chart.type}}-chart" aria-hidden="true"></i> {{ chart.type | dmCapitalize }}</label>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
     </div>
+  </div>
+</div>
+<div class="flex-container">
+  <div (collapsed)="collapsed($event)"
+       (expanded)="expanded($event)"
+       [collapse]="isCollapsed"
+       class="card card-block card-header border-box center">
+    <div class="datepicker-container">
+      <pre class="alert alert-info">Start:   {{startTime}}<br>End:     {{endTime}}</pre>
+      <div class="start-timepicker left">
+        <timepicker [(ngModel)]="startTime"
+                    [hourStep]="hstep"
+                    [minuteStep]="mstep"
+                    [showMeridian]="ismeridian"
+                    [readonlyInput]="!isEnabled"
+                    (ngModelChange)="onStartTimeChange($event)">
+        </timepicker>
+        <datepicker [(ngModel)]="startTime"
+                    [minDate]="minDate"
+                    [showWeeks]="showWeeks">
+        </datepicker>
+      </div>
+      <div class="start-timepicker right">
+        <timepicker [(ngModel)]="endTime"
+                    [hourStep]="hstep"
+                    [minuteStep]="mstep"
+                    [showMeridian]="ismeridian"
+                    [readonlyInput]="!isEnabled"
+                    (ngModelChange)="onEndTimeChange($event)">
+        </timepicker>
+        <datepicker [(ngModel)]="endTime"
+                    [minDate]="startTime"
+                    [showWeeks]="showWeeks">
+        </datepicker>
+      </div>
+    </div>
+  </div>
 </div>

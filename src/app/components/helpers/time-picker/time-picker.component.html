@@ -1,0 +1,14 @@
+<pre class="alert alert-info">Time is: {{startTime}}</pre>
+<timepicker [(ngModel)]="startTime"
+            (ngModelChange)="onChange($event)"
+            [hourStep]="1" [minuteStep]="1"
+            [showMeridian]="false"
+            [readonlyInput]="!isEnabled">
+</timepicker>
+<div style="display:inline-block; min-height:290px;">
+  <datepicker [(ngModel)]="startTime"
+              [minDate]="minDate"
+              [customClass]="customClass"
+              [showWeeks]="true">
+  </datepicker>
+</div>

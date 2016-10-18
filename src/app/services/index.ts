@@ -1,1 +1,1 @@
-export { ActiveUsersService } from './active-users.service';
+export { DataProviderService } from './active-users.service';
