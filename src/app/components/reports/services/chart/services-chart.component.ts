@@ -1,17 +1,25 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { CustomTimeIntervalComponent } from '../../../helpers/index';
-// import { AwsServicesService } from '../../../../services/index'
+import { DataProviderService } from '../../../../services/index';
 
 @Component({
   selector: 'dm-aws-services-chart',
   templateUrl: './services-chart.html',
 })
-export class AwsServicesChartComponent implements OnInit {
+export class AwsServicesChartComponent implements OnInit, AfterViewInit {
+
+  private reportHeader: string = 'Services';
+
   @ViewChild(CustomTimeIntervalComponent)
   private chartInterval: CustomTimeIntervalComponent;
-  private chartModel: {line: boolean, bar: boolean, pie: boolean} = {line: true, bar: true, pie: true};
+  private implementedChartModel: Array<{type: string, status: boolean}> = [
+    {type: 'line', status: true},
+    {type: 'bar', status: true},
+    {type: 'pie', status: true},
+  ];
   private errorMessage: string;
-  private awsServices: any[];
+  private activeUsers: any[];
 
   // @todo - get this from Elastic Search
   public lineChartData: Array<{data: Array<number[]> | number[], label: string}> = [
@@ -24,8 +32,8 @@ export class AwsServicesChartComponent implements OnInit {
   ];
   public lineChartLabels: Array < any > = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public pieChartType: string = 'pie';
-  public chartType = 'line';
-  public radioModel: string = 'line';
+  public chartType = 'pie';
+  public radioModel: string = 'pie';
   public pieChartLabels: string[];
   public pieChartData: number[];
   public chartOptions: any = {
@@ -33,21 +41,40 @@ export class AwsServicesChartComponent implements OnInit {
     maintainAspectRatio: false,
   };
 
-  // constructor(private awsServicesService: AwsServicesService) {
-  // }
+  constructor(private dataProviderService: DataProviderService,  private router: Router) {
+    // console.log('activeUser chartInterval: ', this.chartInterval);
+  }
 
+  /**
+   * Prepare data on Init hook
+   */
   ngOnInit(): void {
     this.pieChartLabels = this.getPieChartLabels();
     this.pieChartData = this.getPieChartData();
-    // this.getAwsServicesInfo();
+    this.getServicesData();
   }
 
-  // getAwsServicesInfo() {
-  //   this.activeUsersService.getAwsServicesInfo()
-  //     .subscribe(
-  //       awsServices => this.awsServices = awsServices,
-  //       error => this.errorMessage = <any>error);
-  // }
+  /**
+   * Set report header on AfterViewInit hook
+   */
+  ngAfterViewInit(): void {
+    this.chartInterval.chartHeader = this.reportHeader;
+  }
+
+  /**
+   * Fetch data by active users
+   */
+  getServicesData(): void {
+    let params: Array<{key: string, value: string}> = [
+      {key: 'sort', value: 'time:asc'},
+    ];
+
+    this.dataProviderService.getData(params)
+      .subscribe(
+        users => this.activeUsers = users,
+        error => this.errorMessage = error
+      );
+  }
 
   /**
    * Returns true if chartType is line or bar
@@ -63,14 +90,6 @@ export class AwsServicesChartComponent implements OnInit {
    */
   public get isPieChart(): boolean {
     return this.chartType === 'pie';
-  }
-
-  /**
-   * @param chartType {String}
-   * @returns {boolean}
-   */
-  public isChartImplemented(chartType: string): boolean {
-    return !!(this.chartModel[chartType]);
   }
 
   /**
@@ -115,11 +134,11 @@ export class AwsServicesChartComponent implements OnInit {
   }
 
   /**
-   * @todo - override chart click if requirements will require some values in tooltip
+   * Redirect to Services page for more details
    * @param e {Event}
    */
   public chartClicked(e: any): void {
-    // console.log(e);
+    this.router.navigate(['/services']);
   }
 
   /**
@@ -131,19 +150,14 @@ export class AwsServicesChartComponent implements OnInit {
   }
 
   /**
-   * @todo - disable button if chart is not implemented
    * @param e {Event}
    */
-  public changeChartType(e: any): void {
+  public redrawChart(e: string): void {
 
-    this.radioModel = this.chartType = this.isChartImplemented(this.radioModel) ? this.radioModel : this.chartType;
+    if (this.chartType === e) {
+      return;
+    }
 
-    e.stopPropagation();
-  }
-
-  public dropdownChanged(e: Event): void {
-    console.log('dropdownChanged e: ', e);
-    e.preventDefault();
-    e.stopPropagation();
+    this.chartType = e;
   }
 }

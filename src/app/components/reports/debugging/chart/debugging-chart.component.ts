@@ -1,17 +1,26 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { CustomTimeIntervalComponent } from '../../../helpers/index';
+import { DataProviderService } from '../../../../services/index';
 
 @Component({
   selector: 'dm-debugging-chart',
   templateUrl: './debugging-chart.html',
 })
-export class DebuggingChartComponent implements OnInit {
+export class DebuggingChartComponent implements OnInit, AfterViewInit {
+
+  private reportHeader: string = 'Debugging';
+
   @ViewChild(CustomTimeIntervalComponent)
   private chartInterval: CustomTimeIntervalComponent;
-  private chartModel: {line: boolean, bar: boolean, pie: boolean} = {line: true, bar: true, pie: true};
+
+  private implementedChartModel: Array<{type: string, status: boolean}> = [
+    {type: 'line', status: true},
+    {type: 'bar', status: true},
+    {type: 'pie', status: true},
+  ];
   private errorMessage: string;
-  private errorsNumber: any[];
-  private warningsNumber: any[];
+  private activeUsers: any[];
 
   // @todo - get this from Elastic Search
   public lineChartData: Array<{data: Array<number[]> | number[], label: string}> = [
@@ -53,30 +62,40 @@ export class DebuggingChartComponent implements OnInit {
     }
   ];
 
-  //@todo - implement CloudTrailService
-  // constructor(private debugService: DebugService) {
-  // }
+  constructor(private dataProviderService: DataProviderService,  private router: Router) {
+    // console.log('debugging chartInterval: ', this.chartInterval);
+  }
 
+  /**
+   * Prepare data on Init hook
+   */
   ngOnInit(): void {
     this.pieChartLabels = this.getPieChartLabels();
     this.pieChartData = this.getPieChartData();
-    // this.getErrorsNumber();
-    // this.getWarningsNumber();
+    this.getDebuggingData();
   }
 
-  // getErrorsNumber() {
-  //     this.debuggingService.getErrorsNumber()
-  //       .subscribe(
-  //         errorsNumber => this.errorsNumber = errorsNumber,
-  //         error =>  this.errorMessage = <any>error);
-  // }
+  /**
+   * Set report header on AfterViewInit hook
+   */
+  ngAfterViewInit(): void {
+    this.chartInterval.chartHeader = this.reportHeader;
+  }
 
-  // getWarningsNumber() {
-  //     this.debuggingService.getWarningsNumber()
-  //       .subscribe(
-  //         warningsNumber => this.warningsNumber = warningsNumber,
-  //         error =>  this.errorMessage = <any>error);
-  // }
+  /**
+   * Fetch data by active users
+   */
+  getDebuggingData(): void {
+    let params: Array<{key: string, value: string}> = [
+      {key: 'sort', value: 'time:asc'},
+    ];
+
+    this.dataProviderService.getData(params)
+      .subscribe(
+        users => this.activeUsers = users,
+        error => this.errorMessage = error
+      );
+  }
 
   /**
    * Returns true if chartType is line or bar
@@ -94,13 +113,6 @@ export class DebuggingChartComponent implements OnInit {
     return this.chartType === 'pie';
   }
 
-  /**
-   * @param chartType {String}
-   * @returns {boolean}
-   */
-  public isChartImplemented(chartType: string): boolean {
-    return !!(this.chartModel[chartType]);
-  }
 
   /**
    * @returns {String[]}
@@ -144,11 +156,11 @@ export class DebuggingChartComponent implements OnInit {
   }
 
   /**
-   * @todo - override chart click if requirements will require some values in tooltip
+   * Redirect to Debugging page for more details
    * @param e {Event}
    */
   public chartClicked(e: any): void {
-    // console.log(e);
+    this.router.navigate(['/debugging']);
   }
 
   /**
@@ -162,16 +174,12 @@ export class DebuggingChartComponent implements OnInit {
   /**
    * @param e {Event}
    */
-  public changeChartType(e: any): void {
+  public redrawChart(e: string): void {
 
-    this.radioModel = this.chartType = this.isChartImplemented(this.radioModel) ? this.radioModel : this.chartType;
+    if (this.chartType === e) {
+      return;
+    }
 
-    e.stopPropagation();
-  }
-
-  public dropdownChanged(e: Event): void {
-    console.log('dropdownChanged e: ', e);
-    e.preventDefault();
-    e.stopPropagation();
+    this.chartType = e;
   }
 }

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+    <div class="container-fluid" (click)="changePage($event)">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Deep Monitoring</a>
         </div>
@@ -15,7 +15,7 @@
                 </ul>
             </li>
             <li><a href="/active-users">Active Users</a></li>
-            <li><a href="/debugging have">Debugging</a></li>
+            <li><a href="/debugging">Debugging</a></li>
             <li><a href="/services">AWS Services Costs</a></li>
             <li><a href="/cloud-trail">Cloud Trail</a></li>
         </ul>

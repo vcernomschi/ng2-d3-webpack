@@ -113,12 +113,7 @@ export class TimePickerDemoComponent implements OnInit {
   // }
 
   ngOnInit() {
-    console.log('ngOnInit');
     let elements = this.nativeElement.getElementsByTagName('input');
-    // let _datepicker = this.nativeElement.getElementsByTagName('td');
-    // console.log('_datepicker: ', _datepicker.toString() );
-    // let tbody =_datepicker.getElementsByTagName('tbody');
-    //   console.log('tbody: ', tbody);
     this.hoursElement = elements[0];
     this.minutesElement = elements[1];
   }

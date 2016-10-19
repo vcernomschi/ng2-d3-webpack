@@ -1,7 +1,4 @@
-/**
- * Created by vcernomschi on 9/23/16.
- */
-
+import { Router } from '@angular/router';
 import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { CustomTimeIntervalComponent } from '../../../helpers/index';
 import { DataProviderService } from '../../../../services/index';
@@ -38,27 +35,34 @@ export class ActiveUsersChartComponent implements OnInit, AfterViewInit {
   public radioModel: string = 'line';
   public pieChartLabels: string[];
   public pieChartData: number[];
-
   public chartOptions: any = {
     responsive: true,
     maintainAspectRatio: false,
   };
 
-  constructor(private dataProviderService: DataProviderService) {
-    // console.log('chartInterval: ', this.chartInterval);
+  constructor(private dataProviderService: DataProviderService,  private router: Router) {
+    // console.log('activeUser chartInterval: ', this.chartInterval);
   }
 
+  /**
+   * Prepare data on Init hook
+   */
   ngOnInit(): void {
     this.pieChartLabels = this.getPieChartLabels();
     this.pieChartData = this.getPieChartData();
     this.getActiveUsers();
   }
 
+  /**
+   * Set report header on AfterViewInit hook
+   */
   ngAfterViewInit(): void {
     this.chartInterval.chartHeader = this.reportHeader;
-    console.log('chartInterval: ', this.chartInterval.chartHeader);
   }
 
+  /**
+   * Fetch data by active users
+   */
   getActiveUsers(): void {
     let params: Array<{key: string, value: string}> = [
       {key: 'sort', value: 'time:asc'},
@@ -129,11 +133,11 @@ export class ActiveUsersChartComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * @todo - override chart click if requirements will require some values in tooltip
+   * Redirect to Active users page for more details
    * @param e {Event}
    */
   public chartClicked(e: any): void {
-    // console.log(e);
+    this.router.navigate(['/active-users']);
   }
 
   /**
@@ -149,14 +153,10 @@ export class ActiveUsersChartComponent implements OnInit, AfterViewInit {
    */
   public redrawChart(e: string): void {
 
-    console.log('PARENT INPUT: ', e);
-
     if (this.chartType === e) {
       return;
     }
 
     this.chartType = e;
-
-    console.log('CHANGED: ', e);
   }
 }

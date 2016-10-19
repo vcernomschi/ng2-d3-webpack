@@ -64,6 +64,7 @@ export class CustomTimeIntervalComponent implements ControlValueAccessor, OnInit
 
   public minDate: Date = void 0;
   public events: Array<any>;
+  public today: Date;
   public tomorrow: Date;
   public afterTomorrow: Date;
   public formats: Array<string> = ['DD-MM-YYYY', 'YYYY/MM/DD', 'DD.MM.YYYY', 'shortDate'];
@@ -76,6 +77,7 @@ export class CustomTimeIntervalComponent implements ControlValueAccessor, OnInit
   public constructor(el: ElementRef) {
     this.startTime = new Date();
     this.endTime = new Date();
+    this.today = new Date();
     (this.tomorrow = new Date()).setDate(this.tomorrow.getDate() + 1);
     (this.afterTomorrow = new Date()).setDate(this.tomorrow.getDate() + 2);
     (this.minDate = new Date()).setDate(this.minDate.getDate() - 1000);
@@ -95,13 +97,11 @@ export class CustomTimeIntervalComponent implements ControlValueAccessor, OnInit
   }
 
   public datePickerChanged(e: Event): void {
-    console.log('datePickerChanged');
     // e.preventDefault();
     // e.stopPropagation();
   }
 
   public dropdownChanged(e: any): void {
-    console.log('dropdownChanged');
     this.dropdownSelected = e.target.text.trim();
 
     this.isCollapsed = !(this.dropdownSelected.indexOf('Custom') !== -1);
@@ -111,7 +111,7 @@ export class CustomTimeIntervalComponent implements ControlValueAccessor, OnInit
   }
 
   setDisabledState(isDisabled: boolean): void {
-    console.log('setDisabledState')
+    // console.log('setDisabledState')
   }
 
   registerOnTouched(fn: any): void {
@@ -121,23 +121,15 @@ export class CustomTimeIntervalComponent implements ControlValueAccessor, OnInit
     this.chartType = this.radioModel;
     let elements = this.nativeElement.getElementsByTagName('input');
     this.hoursStartElement = elements[0];
-    console.log('this.hoursStartElement: ', this.hoursStartElement)
     this.minutesStartElement = elements[1];
-    console.log('this.hoursStartElement: ', this.minutesStartElement)
     this.hoursEndElement = elements[2];
-    console.log('this.hoursStartElement: ', this.hoursEndElement)
     this.minutesEndElement = elements[3];
-    console.log('this.hoursStartElement: ', this.minutesEndElement)
   }
 
   /**
    * Fixing bootstrap timepicker issue
    */
   ngDoCheck() {
-    console.log('this.hoursStartValue: ', this.hoursStartValue);
-    console.log('this.minutesStartValue: ', this.minutesStartValue);
-    console.log('this.hoursEndValue: ', this.hoursEndValue);
-    console.log('this.minutesEndValue: ', this.minutesEndValue);
     this.hoursStartElement.value = this.hoursStartValue;
     this.minutesStartElement.value = this.minutesStartValue;
     this.hoursEndElement.value = this.hoursEndValue;
@@ -171,7 +163,6 @@ export class CustomTimeIntervalComponent implements ControlValueAccessor, OnInit
   }
 
   public onChangeChartType(e: any): void {
-    console.log('onChangeChartType');
     this.radioModel = this.isChartImplemented(this.radioModel) ? this.radioModel : this.chartType;
 
     this.chartChanged.emit(this.radioModel);
@@ -180,9 +171,6 @@ export class CustomTimeIntervalComponent implements ControlValueAccessor, OnInit
   }
 
   onStartTimeChange(newValue: any) {
-
-    console.log('onStartTimeChange: ', newValue);
-
     let newYearValue = newValue.getFullYear();
     let newMonthValue = newValue.getMonth();
     let newDateValue = newValue.getDate();
@@ -221,10 +209,10 @@ export class CustomTimeIntervalComponent implements ControlValueAccessor, OnInit
     }
   }
 
+  /**
+   * @param newValue {Date}
+   */
   onEndTimeChange(newValue: any) {
-
-    console.log('onEndTimeChange: ', newValue);
-
     let newYearValue = newValue.getFullYear();
     let newMonthValue = newValue.getMonth();
     let newDateValue = newValue.getDate();

@@ -1,13 +1,5 @@
 <div class="dm-report-container" id="rigth-now">
-  <!--<dm-time-picker></dm-time-picker>-->
-  <!--<div class="flex-container small-top-padding">-->
-  <!--<div class="flex-numbers">-->
-  <!--<span class="dm-block dm-report-name">Rigth Now</span>-->
-  <!--</div>-->
-  <!--<div class="flex-charts">-->
   <dm-custom-time-interval [chartModel]="implementedChartModel" [radioModel]="chartType" (chartChanged)="redrawChart($event);"></dm-custom-time-interval>
-  <!--</div>-->
-  <!--</div>-->
   <div class="flex-container">
     <div class="flex-numbers">
       <dm-active-users></dm-active-users>

@@ -1,27 +1,5 @@
 <div class="dm-report-container" id="rigth-now">
-  <div class="flex-container small-top-padding">
-    <div class="flex-numbers">
-      <span class="dm-block dm-report-name">Services</span>
-    </div>
-    <div class="flex-charts">
-      <div class="flex-btn-container">
-        <div class="flex-time-interval">
-          <dm-custom-time-interval></dm-custom-time-interval>
-        </div>
-        <div class="flex-chart-type-btn">
-          <div class="btn-group right" (click)="changeChartType($event)">
-            <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="line">
-              <i class="fa fa-line-chart" aria-hidden="true"></i> Line</label>
-            <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="bar">
-              <i class="fa fa-bar-chart" aria-hidden="true"></i> Bar</label>
-            <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="pie">
-              <i class="fa fa-pie-chart" aria-hidden="true"></i> Pie</label>
-          </div>
-          <div class="clear"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <dm-custom-time-interval [chartModel]="implementedChartModel" [radioModel]="chartType" (chartChanged)="redrawChart($event);"></dm-custom-time-interval>
   <div class="flex-container">
     <div class="flex-numbers">
       <dm-aws-services></dm-aws-services>

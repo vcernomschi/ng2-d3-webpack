@@ -3,39 +3,33 @@
     <span class="dm-block dm-report-name">{{chartHeader}}</span>
   </div>
   <div class="flex-charts">
-    <div class="flex-btn-container">
-      <div class="flex-time-interval">
-        <div class="left-float small-right-padding" dropdown keyboardNav="true"
-             (click)="dropdownChanged($event)">
-          <button
-              id="simple-btn-keyboard-nav"
-              type="button"
-              class="btn btn-primary dm-button-flr" dropdownToggle>{{dropdownSelected}} <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
-            <li role="menuitem"><a class="dropdown-item" href="#">Last Month</a></li>
-            <li role="menuitem"><a class="dropdown-item" href="#">Last Week</a></li>
-            <li role="menuitem"><a class="dropdown-item" href="#">Last 2 Days</a></li>
-            <li role="menuitem"><a class="dropdown-item" href="#">Last 24 hours</a></li>
-            <li role="menuitem"><a class="dropdown-item" href="#">Last 1 hour</a></li>
-            <li role="menuitem"><a class="dropdown-item" href="#">Last 30 min</a></li>
-            <li role="menuitem"><a class="dropdown-item" href="#">Last 15 min</a></li>
-            <li role="menuitem"><a class="dropdown-item" href="#">Last 5 min</a></li>
-            <li role="menuitem"><a class="dropdown-item" href="#">Last 1 min</a></li>
-            <li role="menuitem"><a class="dropdown-item" href="#">Last 1 sec</a></li>
-            <li class="divider dropdown-divider"></li>
-            <li role="menuitem">
-              <a class="dropdown-item" href="#">
-                <i class="glyphicon glyphicon-calendar"></i> Custom
-              </a>
-            </li>
-          </ul>
-        </div>
-        <pre class="dm-date-interval alert alert-info">From: <em *ngIf="startTime">{{ startTime | date:'shortDate'}}</em> To <em
-            *ngIf="endTime">{{ endTime | date:'shortDate'}}</em></pre>
-      </div>
-      <div class="flex-chart-type-btn">
         <div class="right chart-nav">
+          <div class="left-float small-right-padding" dropdown keyboardNav="true"
+               (click)="dropdownChanged($event)">
+            <button
+                id="simple-btn-keyboard-nav"
+                type="button"
+                class="btn btn-primary dm-button-flr" dropdownToggle>{{dropdownSelected}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+              <li role="menuitem"><a class="dropdown-item" href="#">Last Month</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Last Week</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Last 2 Days</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Last 24 hours</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Last 1 hour</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Last 30 min</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Last 15 min</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Last 5 min</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Last 1 min</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Last 1 sec</a></li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">
+                  <i class="glyphicon glyphicon-calendar"></i> Custom
+                </a>
+              </li>
+            </ul>
+          </div>
           <div class="btn-group" (click)="onChangeChartType($event)">
             <label class="btn btn-primary" *ngFor="let chart of chartModel" [(ngModel)]="radioModel"
                    btnRadio="{{chart.type}}" disabled="{{!isChartImplemented(chart.type)}}">
@@ -43,8 +37,6 @@
           </div>
         </div>
         <div class="clear"></div>
-      </div>
-    </div>
   </div>
 </div>
 <div class="flex-container">
@@ -64,6 +56,7 @@
         </timepicker>
         <datepicker [(ngModel)]="startTime"
                     [minDate]="minDate"
+                    [maxDate]="today"
                     [showWeeks]="showWeeks">
         </datepicker>
       </div>
@@ -77,6 +70,7 @@
         </timepicker>
         <datepicker [(ngModel)]="endTime"
                     [minDate]="startTime"
+                    [maxDate]="today"
                     [showWeeks]="showWeeks">
         </datepicker>
       </div>
