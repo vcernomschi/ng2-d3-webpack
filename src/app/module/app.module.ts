@@ -7,7 +7,7 @@ import { D3Service } from 'd3-ng2-service';
 import { LoadersCssModule } from 'angular2-loaders-css';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { DataTableDirectives } from 'ng2-data-table/datatable';
-import { routing } from './app.rounting';
+import { routing } from './app.routing';
 
 import { DmCapitalizePipe } from './../pipes/index';
 
