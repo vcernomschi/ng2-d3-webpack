@@ -130,6 +130,21 @@ div.tiny-box {
     margin-bottom: 8px;
 }
 
+.medium-number-box {
+    border: 1px solid #e7e7e7;
+    background-color: #F7F7F7;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    line-height: 50%;
+    text-align: center;
+    font-size: 36px;
+    /*padding-top: 10px;*/
+    /*padding-bottom: 30px;*/
+    /*height: 16px;*/
+    margin-bottom: 8px;
+}
+
 .tiny-number-box-200 {
     border: 1px solid #e7e7e7;
     background-color: #F7F7F7;
@@ -188,17 +203,6 @@ div.tiny-box {
 
 .flex-auto-padding-item {
     border-bottom: 10px solid transparent;
-}
-
-.medium-number-box {
-    border: 1px solid #e7e7e7;
-    background-color: #F7F7F7;
-    border-radius: 5px;
-    width: 100%;
-    height: 100%;
-    font-size: 36px;
-    text-align: center;
-    line-height: normal;
 }
 
 .large-number-box {

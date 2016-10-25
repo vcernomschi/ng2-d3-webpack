@@ -10,6 +10,7 @@ import {
   CloudTrailDetailsComponent,
   DebuggingDetailsComponent,
   AwsServicesDetailsComponent,
+  GanttChartComponent,
 } from '../components';
 
 const APP_ROUTES: Routes = [
@@ -18,6 +19,7 @@ const APP_ROUTES: Routes = [
   {path: 'cloud-trail', component: CloudTrailDetailsComponent},
   {path: 'debugging', component: DebuggingDetailsComponent},
   {path: 'services', component: AwsServicesDetailsComponent},
+  {path: 'gantt', component: GanttChartComponent},
   {path: '', component: HomeComponent},
 ];
 

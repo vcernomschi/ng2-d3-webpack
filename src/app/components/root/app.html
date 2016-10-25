@@ -5,15 +5,17 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Availability
-                    <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Gantt</a></li>
-                    <li><a href="#">Unscramble process</a></li>
-                    <li><a href="/availability">Other</a></li>
-                </ul>
-            </li>
+
+            <!--<li class="dropdown">-->
+                <!--<a class="dropdown-toggle" data-toggle="dropdown" (click)="handleDropdown($event)">Availability-->
+                    <!--<span class="caret"></span></a>-->
+                <!--<ul class="dropdown-menu">-->
+                    <!--<li><a href="/unscramble">Gantt</a></li>-->
+                    <!--<li><a href="/availability">Availability</a></li>-->
+                <!--</ul>-->
+            <!--</li>-->
+            <li><a href="/availability">Availability</a></li>
+            <li><a href="/gantt">Gantt</a></li>
             <li><a href="/active-users">Active Users</a></li>
             <li><a href="/debugging">Debugging</a></li>
             <li><a href="/services">AWS Services Costs</a></li>

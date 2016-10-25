@@ -41,6 +41,7 @@ import {
   CloudTrailChartComponent,
   CloudTrailDetailsComponent,
   CustomTimeIntervalComponent,
+  GanttChartComponent,
 } from '../components/index';
 
 @NgModule({
@@ -67,6 +68,7 @@ import {
     DataTableDirectives,
     DmCapitalizePipe,
     TimePickerDemoComponent,
+    GanttChartComponent
   ],
   imports: [
     BrowserModule,

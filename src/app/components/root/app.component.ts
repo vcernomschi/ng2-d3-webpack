@@ -4,12 +4,12 @@
 
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
-import '../../../../public/css/desktop.css';
-import '../../../../public/css/tablet.css';
-import '../../../../public/css/mobile.css';
+import '../../../assets/css/desktop.css';
+import '../../../assets/css/tablet.css';
+import '../../../assets/css/mobile.css';
+import '../../../assets/css/font-awesome.min.css';
+import '../../../assets/js/Chart.bundle.min.js';
 import '../../../../node_modules/loaders.css/loaders.min.css';
-import '../../../../public/css/font-awesome.css';
-import '../../../../node_modules/chart.js/dist/Chart.bundle.min.js';
 
 @Component({
   selector: 'dm-app',
@@ -23,4 +23,9 @@ export class AppComponent {
     this.router.navigate([e.target.pathname]);
     e.preventDefault();
   }
+
+  // handleDropdown(e: any): void {
+  //   console.log('stop propagation e:', );
+  //   e.stopPropagation();
+  // }
 }
